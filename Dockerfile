@@ -1,7 +1,7 @@
 FROM adoptopenjdk/openjdk11-openj9:jdk-11.0.7_10_openj9-0.20.0-alpine AS build
 COPY . /build
 WORKDIR /build
-RUN ./mvnw clean package
+RUN sudo ./mvnw clean package
 
 FROM adoptopenjdk/openjdk11-openj9:jre-11.0.7_10_openj9-0.20.0-alpine
 WORKDIR /root/
