@@ -2,14 +2,13 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: pipelines-vote-ui
-  name: pipelines-vote-ui
+    app: pipelines-vote-api
+  name: pipelines-vote-api
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
-    - name: 8080-tcp
-      port: 8080
-      targetPort: 8080
-      protocol: TCP
+    - protocol: TCP
+      port: 9000
+      targetPort: 9000
   selector:
-    app: pipelines-vote-ui
+    app: pipelines-vote-api
