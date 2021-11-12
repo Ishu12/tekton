@@ -1,6 +1,8 @@
 FROM alpine/git
+RUN mkdir /app
 WORKDIR /app
-RUN git clone https://github.com/abhiroopghatak/kubetime.git
+COPY . /app
+#RUN git clone https://github.com/abhiroopghatak/kubetime.git
 
 FROM openjdk:8-jre-alpine
 WORKDIR /app
