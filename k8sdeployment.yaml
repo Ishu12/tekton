@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: kubetime
+  name: kubetime
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kubetime
+  template:
+    metadata:
+      labels:
+        app: kubetime
+    spec:
+      containers:
+        - image: quay.io/openshift-pipeline/kubetime:latest
+          imagePullPolicy: Always
+          name: kubetime
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+            - containerPort: 9090
+              protocol: TCP
+          env:
+            - name: VOTING_API_SERVICE_HOST
+              value: kubetime
+            - name: VOTING_API_SERVICE_PORT
+              value: "9000"
